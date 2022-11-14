@@ -3,6 +3,10 @@
 /*=================================*/
 
 .comics-grid {
+    display: grid;
+    grid-template: auto / repeat(auto-fill, minmax(183px, 1fr));
+    align-items: start;
+    gap: 30px;
 }
 
 /*================================*/
@@ -10,20 +14,83 @@
 /*================================*/
 
 .comic-item {
-}
-
-.comic-item__content {
-}
-
-.comic-item__title {
+    display: grid;
+    grid-template: auto / minmax(0, 1fr) 37.31%;
+    gap: 20px;
+    align-items: start;
 }
 
 .comic-item__detail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
+
+.comic-item__image-content {
+    position: relative;
+    aspect-ratio: 125/188;
 }
 
 .comic-item__image {
     position: relative;
+    z-index: 1;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.161);
 }
 
 .comic-item__button {
+    position: absolute;
+    inset: 50% auto auto 0;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    aspect-ratio: 1;
+    padding: 0;
+    margin: 0;
+    border: 2px solid var(--gray-dark);
+    border-radius: 50%;
+    background-color: var(--gray-dark);
+    font-family: "Font Awesome 6 Pro";
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--gray-light);
+    transition: border-color var(--transition), background-color var(--transition);
+}
+
+.comic-item__button::before {
+    content: "\e0b7";
+}
+
+.comic-item__button--active {
+    border-color: var(--gray-light);
+    background-color: var(--red);
+}
+
+/*===================================*/
+/*=====----- MEDIA QUERIES -----=====*/
+/*===================================*/
+
+@media (min-width: 40em) {
+    .comics__grid {
+        gap: 20px;
+    }
+
+    .comic-item {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 30px;
+    }
+
+    .comic-item__image-content {
+        order: -1;
+    }
+
+    .comic-item__button {
+        inset: auto auto 0 50%;
+        transform: translate(-50%, 50%);
+    }
 }

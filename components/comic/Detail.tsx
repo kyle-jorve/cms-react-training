@@ -1,22 +1,20 @@
+import { ComicDeets } from "./Comic";
 import styles from "../../styles/Comics.module.css";
 
-type DetailProps = {
-    issue: string;
-    published: string;
-    creators: string[];
-};
-
-export default function Detail(props: DetailProps) {
+export default function Detail(props: ComicDeets) {
     return (
-        <dl className={styles["comic-item__detail-list"]}>
-            <dt>Issue:</dt>
-            <dd>{props.issue}</dd>
+        <ul className={styles["comic-item__detail-list"]}>
+            <li>
+                <strong>Issue:</strong> {props.issueNumber}
+            </li>
 
-            <dt>Published:</dt>
-            <dd>{props.published}</dd>
+            <li>
+                <strong>Published:</strong> {props.publishDate}
+            </li>
 
-            <dt>Creators:</dt>
-            <dd>{props.creators.join(", ")}</dd>
-        </dl>
+            <li>
+                <strong>Creators:</strong> {props.creators.map((c) => c.name).join(", ")}
+            </li>
+        </ul>
     );
 }

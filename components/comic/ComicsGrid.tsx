@@ -16,10 +16,10 @@ export default function ComicsGrid(props: ComicsGridProps) {
                             key={comic.id}
                             id={comic.id}
                             title={comic.title}
-                            issue={comic.issue}
-                            published={comic.published}
+                            issueNumber={comic.issueNumber}
+                            publishDate={comic.publishDate}
                             creators={comic.creators}
-                            image={comic.image}
+                            thumbnail={comic.thumbnail}
                         />
                     );
                 })}

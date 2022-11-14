@@ -1,12 +1,15 @@
+/*===================================*/
+/*=====----- GLOBAL STYLES -----=====*/
+/*===================================*/
+
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Montserrat:wght@400;700;900&display=swap");
+@import url("./variables.css");
 
 html,
 body {
     padding: 0;
     margin: 0;
-    font-family: var(--font-karla);
-    font-weight: normal;
-    font-size: 1rem;
+    background: var(--gray-light);
 }
 
 a {
@@ -25,20 +28,175 @@ button {
     cursor: pointer;
 }
 
-.content-wrapper {
+.wrapper {
     width: 100%;
-    max-width: 1360px;
-    padding: 0 20px;
+    padding: 46px 20px;
     margin: 0 auto;
 }
 
-@media (prefers-color-scheme: dark) {
-    html {
-        color-scheme: dark;
+.wrapper--content {
+    max-width: var(--content-width);
+}
+
+.wrapper--intro {
+    max-width: 808px;
+}
+
+@media (min-width: 64em) {
+    .wrapper--intro {
+        padding: 66px 20px;
+    }
+}
+
+/*================================*/
+/*=====----- TYPOGRAPHY -----=====*/
+/*================================*/
+
+html {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+body {
+    font-family: var(--font-montserrat);
+    font-weight: normal;
+    font-size: 20px;
+    color: var(--gray-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 0.8em;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-weight-black);
+    line-height: 1.2;
+    color: var(--red);
+}
+
+h1 {
+    font-size: 27px;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+h3,
+h4,
+h5,
+h6 {
+    font-weight: var(--font-weight-bold);
+    font-size: 16px;
+    color: var(--gray-dark);
+}
+
+.has-featured-flag {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.featured-flag {
+    position: relative;
+    z-index: -1;
+    transform: matrix(1, -0.05, 0.05, 1, -10, 4);
+    display: inline-block;
+    padding: 8px 18px 7px 14px;
+    background: var(--green);
+    box-decoration-break: clone;
+    font-size: 14px;
+    line-height: calc(8 / 7);
+    color: var(--gray-light);
+    text-shadow: 2px 2px 0 var(--gray-dark);
+}
+
+@media (min-width: 64em) {
+    h1 {
+        font-size: 61px;
     }
 
-    body {
-        color: white;
-        background: black;
+    h2 {
+        font-size: 49px;
+    }
+
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: 18px;
+    }
+
+    .featured-flag {
+        transform: matrix(1, -0.05, 0.05, 1, -30, 16);
+        padding: 10px 18px 11px 15px;
+        font-size: 18px;
+    }
+}
+
+/*==========================*/
+/*=====----- HERO -----=====*/
+/*==========================*/
+
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120vw;
+    padding: 20px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.702), rgba(0, 0, 0, 0) 50%),
+        url("../images/hero-photo.jpg") no-repeat center center / cover;
+}
+
+.hero::before {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 2;
+    display: block;
+    height: 92px;
+    background: url("../images/halftone.png") no-repeat center 20px / cover;
+    content: "";
+    pointer-events: none;
+}
+
+.hero__title {
+    position: relative;
+    z-index: 3;
+    padding: 16px 33px 17px 31px;
+    background: rgba(194, 72, 104, 0.902);
+    box-decoration-break: clone;
+    color: var(--gray-light);
+    text-shadow: 2px 2px 0 var(--gray-dark);
+}
+
+@media (min-width: 40em) {
+    .hero {
+        min-height: 45.14vw;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.702), rgba(0, 0, 0, 0) 27%),
+            url("../images/hero-photo.jpg") no-repeat center center / cover;
+    }
+}
+
+@media (min-width: 64em) {
+    .hero::before {
+        height: 176px;
+        background-image: url("../images/halftone@2x.png");
+    }
+
+    .hero__title {
+        padding: 37px 69px;
+        text-shadow: 3px 3px 0 var(--gray-dark);
+    }
+}
+
+@media (min-width: 90em) {
+    .hero {
+        background-image: url("../images/hero-photo@2x.jpg");
     }
 }

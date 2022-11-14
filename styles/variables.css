@@ -1,8 +1,22 @@
 :root {
+    /*----- typography -----*/
+
     --font-karla: "Karla", sans-serif;
     --font-montserrat: "Montserrat", sans-serif;
 
     --font-weight-normal: 400;
     --font-weight-bold: 700;
     --font-weight-black: 900;
+
+    /*----- colors -----*/
+
+    --gray-light: #f8f8f2;
+    --gray-dark: #222222;
+    --red: #c24868;
+    --green: #9ecfc5;
+
+    /*----- layout -----*/
+
+    --content-width: 1360px;
+    --transition: 0.3s ease;
 }

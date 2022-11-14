@@ -1,7 +1,7 @@
 import styles from "../../styles/Comics.module.css";
 
 type ButtonProps = {
-    id: string;
+    id: number;
     title: string;
     favorited: boolean;
     onClick: React.MouseEventHandler;
