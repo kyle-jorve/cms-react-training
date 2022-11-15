@@ -1,23 +1,15 @@
-import { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import ComicsGrid from "../components/comic/ComicsGrid";
+import fetchData from "../hooks/comicsData";
 import { ComicProps } from "../components/comic/Comic";
-import useFetchData from "../hooks/comicsData";
 
-export default function Home() {
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-    const [data, setData] = useState([]);
-    const getData = useFetchData;
+type HomeProps = {
+    error?: boolean;
+    comics?: ComicProps[];
+};
 
-    useEffect(() => {
-        getData(
-            (res: any) => {
-                setData(res);
-                setLoading(false);
-            },
-            () => setError(true),
-        );
-    }, [getData]);
+export default function Home(props: HomeProps) {
+    const isError = props.error || !props.comics?.length;
 
     return (
         <Fragment>
@@ -36,16 +28,34 @@ export default function Home() {
                 </p>
             </div>
             <div className="wrapper wrapper--content">
-                {loading ? (
+                {isError ? (
+                    <p>An error occurred. Please try again or contact your administrator. 🙁</p>
+                ) : !props.comics?.length ? (
                     <p>
                         <b>Loading...</b>
                     </p>
-                ) : error ? (
-                    <p>An error occurred. Please try again or contact your administrator. 🙁</p>
                 ) : (
-                    <ComicsGrid comics={data} />
+                    <ComicsGrid comics={props.comics} />
                 )}
             </div>
         </Fragment>
     );
+}
+
+export async function getStaticProps() {
+    const data: any = await fetchData();
+
+    if (!data?.length) {
+        return {
+            props: {
+                error: true,
+            },
+        };
+    }
+
+    return {
+        props: {
+            comics: data,
+        },
+    };
 }

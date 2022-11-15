@@ -5,11 +5,10 @@ const timestamp = Date.now();
 const privateKey = "8b0b77e9de2d9c2ef3b758bf067295ccf49cf23d";
 const key = "25574eee910d7ebef6f7fa333a6a51d9";
 const hash = md5(`${timestamp}${privateKey}${key}`);
+const api = `https://gateway.marvel.com/v1/public/comics?ts=${timestamp}&apikey=${key}&hash=${hash}`;
 
-let api = `https://gateway.marvel.com/v1/public/comics?ts=${timestamp}&apikey=${key}&hash=${hash}`;
-
-export default function useFetchData(callback: Function, errorCallback: Function) {
-    fetch(api)
+export default function fetchData() {
+    return fetch(api)
         .then((res) => {
             if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
 
@@ -31,10 +30,10 @@ export default function useFetchData(callback: Function, errorCallback: Function
                 };
             });
 
-            callback(returnData);
+            return returnData;
         })
         .catch((err) => {
             console.log(err);
-            errorCallback();
+            return false;
         });
 }
