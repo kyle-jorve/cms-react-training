@@ -1,8 +1,24 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import ComicsGrid from "../components/comic/ComicsGrid";
-import data from "../hooks/comicsData";
+import { ComicProps } from "../components/comic/Comic";
+import useFetchData from "../hooks/comicsData";
 
 export default function Home() {
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+    const [data, setData] = useState([]);
+    const getData = useFetchData;
+
+    useEffect(() => {
+        getData(
+            (res: any) => {
+                setData(res);
+                setLoading(false);
+            },
+            () => setError(true),
+        );
+    }, [getData]);
+
     return (
         <Fragment>
             <section className="hero">
@@ -20,7 +36,15 @@ export default function Home() {
                 </p>
             </div>
             <div className="wrapper wrapper--content">
-                <ComicsGrid comics={data} />
+                {loading ? (
+                    <p>
+                        <b>Loading...</b>
+                    </p>
+                ) : error ? (
+                    <p>An error occurred. Please try again or contact your administrator. 🙁</p>
+                ) : (
+                    <ComicsGrid comics={data} />
+                )}
             </div>
         </Fragment>
     );

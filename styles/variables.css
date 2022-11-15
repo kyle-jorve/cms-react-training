@@ -18,5 +18,8 @@
     /*----- layout -----*/
 
     --content-width: 1360px;
+
+    /*----- transition -----*/
+
     --transition: 0.3s ease;
 }

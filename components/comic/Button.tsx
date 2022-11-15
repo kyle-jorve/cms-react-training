@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBoltLightning } from "@fortawesome/free-solid-svg-icons";
 import styles from "../../styles/Comics.module.css";
 
 type ButtonProps = {
@@ -16,11 +18,8 @@ export default function Button(props: ButtonProps) {
     );
 
     return (
-        <button
-            className={cssClasses.join(" ")}
-            data-id={props.id}
-            aria-label={ariaLabel}
-            onClick={props.onClick}
-        ></button>
+        <button className={cssClasses.join(" ")} data-id={props.id} aria-label={ariaLabel} onClick={props.onClick}>
+            <FontAwesomeIcon icon={faBoltLightning} />
+        </button>
     );
 }

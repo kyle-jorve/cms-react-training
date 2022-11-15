@@ -4,7 +4,7 @@
 
 .comics-grid {
     display: grid;
-    grid-template: auto / repeat(auto-fill, minmax(183px, 1fr));
+    grid-template: auto / minmax(0, 1fr);
     align-items: start;
     gap: 30px;
 }
@@ -36,6 +36,7 @@
     position: relative;
     z-index: 1;
     object-fit: cover;
+    object-position: left center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.161);
 }
 
@@ -54,16 +55,10 @@
     border: 2px solid var(--gray-dark);
     border-radius: 50%;
     background-color: var(--gray-dark);
-    font-family: "Font Awesome 6 Pro";
-    font-weight: 900;
     font-size: 16px;
     line-height: 1;
     color: var(--gray-light);
     transition: border-color var(--transition), background-color var(--transition);
-}
-
-.comic-item__button::before {
-    content: "\e0b7";
 }
 
 .comic-item__button--active {
@@ -76,7 +71,8 @@
 /*===================================*/
 
 @media (min-width: 40em) {
-    .comics__grid {
+    .comics-grid {
+        grid-template: auto / repeat(auto-fill, minmax(183px, 1fr));
         gap: 20px;
     }
 

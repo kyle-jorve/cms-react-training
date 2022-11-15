@@ -45,8 +45,6 @@ export default function Comic(props: ComicProps) {
         months[publishDate.getMonth()]
     } ${publishDate.getDate()}, ${publishDate.getFullYear()}`;
 
-    console.log(publishDate);
-
     function buttonClickHandler() {
         setFaved((prev) => !prev);
     }
@@ -65,6 +63,12 @@ export default function Comic(props: ComicProps) {
                     fill
                     alt={`${props.title} cover image`}
                     className={styles["comic-item__image"]}
+                    sizes="(min-width: 1360px) 203px
+                    (min-width: 1238px) 16.67vw
+                    (min-width: 1035px) 20vw
+                    (min-width: 832px) 25vw
+                    (min-width: 640px) 33.33vw
+                    40vw"
                 />
 
                 <Button id={props.id} title={props.title} favorited={faved} onClick={buttonClickHandler} />
