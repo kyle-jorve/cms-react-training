@@ -2,7 +2,30 @@
 /*=====----- COMICS GRID -----=====*/
 /*=================================*/
 
-.comics-grid {
+.comics {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+    align-items: start;
+    padding-bottom: 14px;
+}
+
+.comics__header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 20px 10px;
+    margin-bottom: 22px;
+    background: var(--gray-dark);
+    color: var(--gray-light);
+}
+
+.comics__grid {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template: auto / minmax(0, 1fr);
     align-items: start;
@@ -71,9 +94,9 @@
 /*===================================*/
 
 @media (min-width: 40em) {
-    .comics-grid {
+    .comics__grid {
         grid-template: auto / repeat(auto-fill, minmax(183px, 1fr));
-        gap: 20px;
+        gap: 60px 20px;
     }
 
     .comic-item {
@@ -88,5 +111,12 @@
     .comic-item__button {
         inset: auto auto 0 50%;
         transform: translate(-50%, 50%);
+    }
+}
+
+@media (min-width: 64em) {
+    .comics {
+        grid-template: auto / minmax(0, 1fr) 265px;
+        gap: 60px;
     }
 }

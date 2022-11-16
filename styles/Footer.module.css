@@ -1,0 +1,42 @@
+.footer {
+    padding: 29px 20px 39px;
+    background: var(--gray-dark);
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-weight-normal);
+    font-size: 14px;
+    line-height: calc(8 / 7);
+    color: var(--gray-light);
+    text-align: center;
+}
+
+.footer__logo {
+    display: block;
+    width: 106px;
+    aspect-ratio: 1;
+    margin: 0 auto 26px;
+    text-decoration: none !important;
+}
+
+.footer__logo svg {
+    width: 100%;
+}
+
+.footer p {
+    margin: 0 0 16px;
+}
+
+.footer p:last-child {
+    margin: 0;
+}
+
+.footer a {
+    font: inherit;
+    color: inherit;
+    text-decoration: underline;
+}
+
+@media (min-width: 64em) {
+    .footer {
+        padding: 30px 20px 51px;
+    }
+}

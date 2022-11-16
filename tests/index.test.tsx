@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import Detail from "../components/comic/Detail";
+import Detail from "../components/comics/Detail";
 
 describe("Detail component", () => {
     it("renders all comic details correctly", () => {

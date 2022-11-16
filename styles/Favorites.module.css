@@ -1,0 +1,142 @@
+/*=============================*/
+/*=====----- COUNTER -----=====*/
+/*=============================*/
+
+.faves-counter {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 12px 6px;
+    margin: 0;
+    background: none;
+    border: none;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-weight-normal);
+    font-size: 18px;
+    color: inherit;
+    line-height: 1;
+}
+
+.faves-counter__text {
+    display: none;
+    font-weight: var(--font-weight-bold);
+}
+
+@media (min-width: 64em) {
+    .faves-counter__text {
+        display: block;
+    }
+}
+
+/*==========================*/
+/*=====----- MENU -----=====*/
+/*==========================*/
+
+.faves {
+    color: var(--gray-light);
+}
+
+.faves__button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-weight-bold);
+    font-size: 14px;
+    line-height: calc(8 / 7);
+    color: inherit;
+    text-align: left;
+}
+
+.faves__menu {
+    position: absolute;
+    inset: auto 0 0 0;
+    transform: translateY(100%);
+    background: var(--gray-dark);
+    border-top: 2px solid var(--gray-light);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition);
+}
+
+.faves__menu--active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.faves__menu-inner {
+    padding: 30px;
+}
+
+.faves__title {
+    margin: 0 0 47px;
+    color: inherit;
+}
+
+.faves__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 47px;
+}
+
+.faves p {
+    margin: 0;
+}
+
+.faves__close-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 11px 20px;
+    margin: 0;
+    background: var(--red);
+    border: none;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-weight-bold);
+    font-size: 14px;
+    line-height: calc(8 / 7);
+    color: var(--gray-light);
+}
+
+@media (min-width: 64em) {
+    .faves {
+        background: var(--gray-dark);
+        grid-row: span 2;
+        padding: 30px 30px 40px;
+    }
+
+    .faves__menu {
+        position: static;
+        transform: none;
+        background: none;
+        border: none;
+        box-shadow: none;
+        opacity: 1;
+        pointer-events: all;
+        transition: none;
+    }
+
+    .faves__menu-inner {
+        padding: 0;
+    }
+
+    .faves__title {
+        margin-bottom: 36px;
+        font-size: 25px;
+    }
+
+    .faves__grid {
+        gap: 26px;
+    }
+
+    .faves__close-button {
+        display: none;
+    }
+}

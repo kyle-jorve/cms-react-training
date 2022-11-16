@@ -1,0 +1,58 @@
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120vw;
+    padding: 20px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.702), rgba(0, 0, 0, 0) 50%),
+        url("../images/hero-photo.jpg") no-repeat center center / cover;
+}
+
+.hero::before {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 2;
+    display: block;
+    height: 92px;
+    background: url("../images/halftone.png") no-repeat center 20px / cover;
+    content: "";
+    pointer-events: none;
+}
+
+.hero__title {
+    position: relative;
+    z-index: 3;
+    padding: 16px 33px 17px 31px;
+    background: rgba(194, 72, 104, 0.902);
+    box-decoration-break: clone;
+    color: var(--gray-light);
+    text-shadow: 2px 2px 0 var(--gray-dark);
+}
+
+@media (min-width: 40em) {
+    .hero {
+        min-height: 45.14vw;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.702), rgba(0, 0, 0, 0) 27%),
+            url("../images/hero-photo.jpg") no-repeat center center / cover;
+    }
+}
+
+@media (min-width: 64em) {
+    .hero::before {
+        height: 176px;
+        background-image: url("../images/halftone@2x.png");
+    }
+
+    .hero__title {
+        padding: 37px 69px;
+        text-shadow: 3px 3px 0 var(--gray-dark);
+    }
+}
+
+@media (min-width: 90em) {
+    .hero {
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.702), rgba(0, 0, 0, 0) 27%),
+            url("../images/hero-photo@2x.jpg");
+    }
+}

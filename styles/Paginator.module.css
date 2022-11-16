@@ -1,0 +1,36 @@
+.pager {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.pager__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    aspect-ratio: 1;
+    flex-shrink: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--gray-dark);
+    font-size: 18px;
+    line-height: 1;
+    color: var(--gray-light);
+}
+
+.pager__text {
+    font-family: var(--font-karla);
+    font-weight: normal;
+    font-size: 18px;
+}
+
+@media (min-width: 64em) {
+    .pager {
+        grid-column: 1;
+    }
+}

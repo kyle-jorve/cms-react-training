@@ -1,4 +1,4 @@
-import { ComicProps } from "../components/comic/Comic";
+import { ComicProps } from "../components/comics/Comic";
 
 const md5 = require("js-md5");
 const timestamp = Date.now();
