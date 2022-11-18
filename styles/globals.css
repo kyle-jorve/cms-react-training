@@ -28,6 +28,12 @@ button {
     cursor: pointer;
 }
 
+image,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
 .wrapper {
     width: 100%;
     padding: 46px 20px;

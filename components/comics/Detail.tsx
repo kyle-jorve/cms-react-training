@@ -4,7 +4,7 @@ import styles from "../../styles/Comics.module.css";
 export default function Detail(props: ComicDeets) {
     return (
         <ul className={styles["comic-item__detail-list"]}>
-            {!!props.issueNumber && (
+            {props.issueNumber !== undefined && (
                 <li data-testid="issue-li">
                     <strong>Issue:</strong> {props.issueNumber}
                 </li>

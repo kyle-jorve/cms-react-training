@@ -3,13 +3,12 @@ import { faBoltLightning } from "@fortawesome/free-solid-svg-icons";
 import styles from "../../styles/Comics.module.css";
 
 type ButtonProps = {
-    id: number;
     title: string;
     favorited: boolean;
     onClick: React.MouseEventHandler;
 };
 
-export default function Button(props: ButtonProps) {
+export default function FaveButton(props: ButtonProps) {
     const ariaLabel = `${props.favorited ? "remove" : "save"} ${props.title} ${
         props.favorited ? "from " : "to"
     } your favorites`;
@@ -18,7 +17,7 @@ export default function Button(props: ButtonProps) {
     );
 
     return (
-        <button className={cssClasses.join(" ")} data-id={props.id} aria-label={ariaLabel} onClick={props.onClick}>
+        <button className={cssClasses.join(" ")} aria-label={ariaLabel} onClick={props.onClick}>
             <FontAwesomeIcon icon={faBoltLightning} />
         </button>
     );

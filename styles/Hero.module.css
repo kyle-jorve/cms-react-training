@@ -14,7 +14,8 @@
     inset: auto 0 0 0;
     z-index: 2;
     display: block;
-    height: 92px;
+    height: 25vw;
+    min-height: 92px;
     background: url("../images/halftone.png") no-repeat center 20px / cover;
     content: "";
     pointer-events: none;
@@ -32,15 +33,23 @@
 
 @media (min-width: 40em) {
     .hero {
-        min-height: 45.14vw;
+        min-height: 60vw;
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.702), rgba(0, 0, 0, 0) 27%),
             url("../images/hero-photo.jpg") no-repeat center center / cover;
+    }
+
+    .hero::before {
+        height: 12.22vw;
+        min-height: 176px;
     }
 }
 
 @media (min-width: 64em) {
+    .hero {
+        min-height: 45.14vw;
+    }
+
     .hero::before {
-        height: 176px;
         background-image: url("../images/halftone@2x.png");
     }
 

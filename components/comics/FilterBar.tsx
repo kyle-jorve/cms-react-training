@@ -72,6 +72,8 @@ export default function FilterBar(props: FilterBarProps) {
     const characterField = useRef() as React.MutableRefObject<HTMLDivElement>;
     const creatorField = useRef() as React.MutableRefObject<HTMLDivElement>;
     const menuClasses = [styles["filters__menu"], props.menuOpen && styles["filters__menu--active"]].filter((c) => c);
+    const characterFieldID = "characters";
+    const creatorFieldID = "creators";
 
     function changeHandler(event: React.ChangeEvent) {
         const target = event.currentTarget as HTMLSelectElement;
@@ -79,16 +81,24 @@ export default function FilterBar(props: FilterBarProps) {
         const value = target.value;
 
         if (!value || !value.trim().length) {
-            if (id === "character-filter") characterField.current!.classList.remove("active");
+            context.updateFiltersHandler({
+                [id]: null,
+            });
 
-            if (id === "creator-filter") creatorField.current!.classList.remove("active");
+            if (id === characterFieldID) characterField.current!.classList.remove("active");
+
+            if (id === creatorFieldID) creatorField.current!.classList.remove("active");
 
             return;
         }
 
-        if (id === "character-filter") characterField.current!.classList.add("active");
+        context.updateFiltersHandler({
+            [id]: Number(value),
+        });
 
-        if (id === "creator-filter") creatorField.current!.classList.add("active");
+        if (id === characterFieldID) characterField.current!.classList.add("active");
+
+        if (id === creatorFieldID) creatorField.current!.classList.add("active");
     }
 
     return (
@@ -108,10 +118,14 @@ export default function FilterBar(props: FilterBarProps) {
                 "Filter by:"
             )}
 
-            <div className={menuClasses.join(" ")} id="filter-menu" aria-hidden={!props.menuOpen}>
+            <div
+                className={menuClasses.join(" ")}
+                id="filter-menu"
+                aria-hidden={context.mobile ? !props.menuOpen : false}
+            >
                 <div className={"field"} ref={characterField}>
-                    <label htmlFor="character-filter">Character</label>
-                    <select id="character-filter" onChange={changeHandler}>
+                    <label htmlFor={characterFieldID}>Character</label>
+                    <select id={characterFieldID} onChange={changeHandler}>
                         <option value=""></option>
                         {characterFilters.map((ch) => {
                             return (
@@ -124,8 +138,8 @@ export default function FilterBar(props: FilterBarProps) {
                 </div>
 
                 <div className={"field"} ref={creatorField}>
-                    <label htmlFor="creator-filter">Creator</label>
-                    <select id="creator-filter" onChange={changeHandler}>
+                    <label htmlFor={creatorFieldID}>Creator</label>
+                    <select id={creatorFieldID} onChange={changeHandler}>
                         <option value=""></option>
                         {creatorFilters.map((cr) => {
                             return (

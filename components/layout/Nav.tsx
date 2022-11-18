@@ -20,13 +20,18 @@ export default function Nav() {
                     className={navButtonClasses.join(" ")}
                     aria-label="open mobile navigation menu"
                     aria-controls="header-nav"
-                    aria-expanded="false"
+                    aria-expanded={context.navOpen}
+                    onClick={context.navToggleHandler}
                 >
                     <FontAwesomeIcon icon={faBars} />
                     <FontAwesomeIcon icon={faXmark} />
                 </button>
             )}
-            <nav className={navClasses.join(" ")} id="header-nav" aria-hidden={!context.navOpen}>
+            <nav
+                className={navClasses.join(" ")}
+                id="header-nav"
+                aria-hidden={context.mobile ? !context.navOpen : false}
+            >
                 <Link href="/" className={styles["header__nav-link"]}>
                     Home
                 </Link>

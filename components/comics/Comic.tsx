@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+import GlobalContext from "../../context/global-context";
 import Image from "next/image";
-import Button from "./Button";
-import { useState } from "react";
+import FaveButton from "./FaveButton";
 import styles from "../../styles/Comics.module.css";
 import Detail from "./Detail";
 
@@ -39,14 +39,23 @@ const months = [
 ];
 
 export default function Comic(props: ComicProps) {
-    const [faved, setFaved] = useState(false);
+    const context = useContext(GlobalContext);
+    const faved = context.faves.find((fav: any) => fav.id === props.id);
     const publishDate = new Date(props.publishDate);
     const publishDateString = `${
         months[publishDate.getMonth()]
     } ${publishDate.getDate()}, ${publishDate.getFullYear()}`;
 
     function buttonClickHandler() {
-        setFaved((prev) => !prev);
+        context.updateFavesHandler(
+            {
+                id: props.id,
+                title: props.title,
+                issueNumber: props.issueNumber,
+                thumbnail: props.thumbnail,
+            },
+            faved,
+        );
     }
 
     return (
@@ -71,7 +80,7 @@ export default function Comic(props: ComicProps) {
                     40vw"
                 />
 
-                <Button id={props.id} title={props.title} favorited={faved} onClick={buttonClickHandler} />
+                <FaveButton title={props.title} favorited={faved} onClick={buttonClickHandler} />
             </div>
         </article>
     );
