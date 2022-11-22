@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import Image from "next/image";
 import GlobalContext from "../../context/global-context";
 import { FavoritesMenuProps } from "./FavoritesMenu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBoltLightning, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faBoltLightning } from "@fortawesome/free-solid-svg-icons";
 import styles from "../../styles/Favorites.module.css";
+import FaveItem from "./FavoriteItem";
 
 interface FavoritesGridProps extends FavoritesMenuProps {
     ariaHidden: boolean;
@@ -35,35 +35,14 @@ export default function FavoritesGrid(props: FavoritesGridProps) {
                     {!!context.faves.length ? (
                         context.faves.map((fav: any) => {
                             return (
-                                <div className={styles["faves__item"]} key={fav.id}>
-                                    <button
-                                        className={styles["faves__item-remove-button"]}
-                                        aria-label="remove favorite"
-                                        onClick={() => removeFavoriteHandler(fav.id)}
-                                    >
-                                        <FontAwesomeIcon icon={faXmark} />
-                                    </button>
-
-                                    <div className={styles["faves__item-img-cont"]}>
-                                        <Image
-                                            className={styles["faves__item-img"]}
-                                            src={fav.thumbnail}
-                                            fill
-                                            alt={`${fav.itlte} cover iamge`}
-                                            sizes="50px"
-                                        />
-                                    </div>
-
-                                    <div className={styles["faves__item-content"]}>
-                                        <h3 className={styles["faves__item-title"]}>{fav.title}</h3>
-
-                                        {fav.issueNumber !== undefined && (
-                                            <span className={styles["faves__item-detail"]}>
-                                                Issue: {fav.issueNumber}
-                                            </span>
-                                        )}
-                                    </div>
-                                </div>
+                                <FaveItem
+                                    key={fav.id}
+                                    id={fav.id}
+                                    thumbnail={fav.thumbnail}
+                                    title={fav.title}
+                                    issueNumber={fav.issueNumber}
+                                    removeFavorite={removeFavoriteHandler}
+                                />
                             );
                         })
                     ) : (

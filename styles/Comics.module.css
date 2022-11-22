@@ -10,6 +10,10 @@
     padding-bottom: 14px;
 }
 
+.comics p {
+    margin: 0;
+}
+
 .comics__header {
     position: relative;
     z-index: 10;
@@ -116,7 +120,8 @@
 
 @media (min-width: 64em) {
     .comics {
-        grid-template: auto / minmax(0, 1fr) 265px;
+        grid-template: min-content minmax(0, 1fr) / minmax(0, 1fr) 265px;
+        grid-auto-rows: auto;
         gap: 60px;
     }
 }
