@@ -1,5 +1,4 @@
-import React, { Fragment, useContext } from "react";
-import GlobalContext from "../context/global-context";
+import React, { Fragment } from "react";
 import ComicsGrid from "../components/comics/ComicsGrid";
 import Hero from "../components/layout/Hero";
 
