@@ -149,6 +149,8 @@ export function GlobalContextProvider(props: React.PropsWithChildren) {
 
             return JSON.stringify(returnFilter);
         });
+
+        setPage(0);
     }
 
     return (
